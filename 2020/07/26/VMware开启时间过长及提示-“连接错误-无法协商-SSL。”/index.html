@@ -62,7 +62,7 @@
 <meta property="og:image" content="https://delayer.top/images/VMware_02.png">
 <meta property="og:image" content="https://delayer.top/images/VMware_03.png">
 <meta property="og:image" content="https://delayer.top/images/VMware_04.png">
-<meta property="og:updated_time" content="2020-07-25T19:15:35.280Z">
+<meta property="og:updated_time" content="2020-07-25T19:17:54.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”">
 <meta name="twitter:description" content="VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”故障说明在升级Win10 专业工作站版 到2004 后发现 VMware 开启时间过长将近两分钟才可以加载完成 卡在初始化页面 如下 经过好久后启动完成。  同时连接esxi服务器后打开已启动虚拟机造成VMware长时间未响应容易造成卡死如下图 同时虚拟机客户端页面显示黑屏 不能正常远程操作如下图 有时间会提醒用户 “连接错误: 无">
@@ -205,7 +205,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-07-26 02:28:34 / 修改时间：03:15:35" itemprop="dateCreated datePublished" datetime="2020-07-26T02:28:34+08:00">2020-07-26</time>
+              <time title="创建时间：2020-07-26 02:28:34 / 修改时间：03:17:54" itemprop="dateCreated datePublished" datetime="2020-07-26T02:28:34+08:00">2020-07-26</time>
             </span>
 
           
@@ -259,6 +259,8 @@
 <p><img src="/images/VMware_2.png" alt="未响应截图"><br>同时虚拟机客户端页面显示黑屏 不能正常远程操作如下图</p>
 <p><img src="/images/VMware_02.png" alt="客户端黑屏"><br>有时间会提醒用户 “连接错误: 无法协商 SSL。”  有时候不会有更多提醒。。弹窗图片待补充</p>
 <p><img src="/images/VMware_03.png" alt="连接错误: 无法协商 SSL。"></p>
+<a id="more"></a>
+
 <h3 id="排查过程"><a href="#排查过程" class="headerlink" title="排查过程"></a>排查过程</h3><p>因提醒比较模糊 按照提醒进行排查 走很多弯路 如有同样遇到此情况的朋友 可直接查看解决方法 查看是否可解决</p>
 <ol>
 <li>因提示SSL无法协商  第一时间想到是否是因为域名证书 错误。。正好回想到成就传言我所使用Let’s Encrypt OSCP域名访问可能出现问题。更换为 aliyun提供免费的域名在证书 导入新证书后 仍然存在此问题 排除是ssl证书引起报错</li>
