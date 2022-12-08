@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”故障说明在升级Win10 专业工作站版 到2004 后发现 VMware 开启时间过长将近两分钟才可以加载完成 卡在初始化页面 如下   经过好久后启动完成。  同时连接esxi服务器后打开已启动虚拟机造成VMware长时间未响应容易造成卡死如下图 同时虚拟机客户端页面显示黑屏 不能正常远程操作如下图 有时间会提醒用户 “连接错误:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”">
+<meta property="og:url" content="https://delayer.top/2020/07/26/VMware%E5%BC%80%E5%90%AF%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E5%8F%8A%E6%8F%90%E7%A4%BA-%E2%80%9C%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF-%E6%97%A0%E6%B3%95%E5%8D%8F%E5%95%86-SSL%E3%80%82%E2%80%9D/index.html">
+<meta property="og:site_name" content="C-Y-X">
+<meta property="og:description" content="VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”故障说明在升级Win10 专业工作站版 到2004 后发现 VMware 开启时间过长将近两分钟才可以加载完成 卡在初始化页面 如下   经过好久后启动完成。  同时连接esxi服务器后打开已启动虚拟机造成VMware长时间未响应容易造成卡死如下图 同时虚拟机客户端页面显示黑屏 不能正常远程操作如下图 有时间会提醒用户 “连接错误:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://delayer.top/images/VMware_white.png">
+<meta property="og:image" content="https://delayer.top/images/VMware_2.png">
+<meta property="og:image" content="https://delayer.top/images/VMware_02.png">
+<meta property="og:image" content="https://delayer.top/images/VMware_03.png">
+<meta property="og:image" content="https://delayer.top/images/VMware_04.png">
+<meta property="article:published_time" content="2020-07-25T18:28:34.000Z">
+<meta property="article:modified_time" content="2020-07-25T19:17:54.333Z">
+<meta property="article:author" content="C-Y-X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://delayer.top/images/VMware_white.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://delayer.top/2020/07/26/VMware开启时间过长及提示-“连接错误-无法协商-SSL。”/"/>
+
+
+
+
+
+  <title>VMware开启时间过长及提示 “连接错误: 无法协商 SSL。” | C-Y-X</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">C-Y-X</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://delayer.top/2020/07/26/VMware%E5%BC%80%E5%90%AF%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E5%8F%8A%E6%8F%90%E7%A4%BA-%E2%80%9C%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF-%E6%97%A0%E6%B3%95%E5%8D%8F%E5%95%86-SSL%E3%80%82%E2%80%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="C-Y-X">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-26T02:28:34+08:00">
+                2020-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/26/VMware%E5%BC%80%E5%90%AF%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E5%8F%8A%E6%8F%90%E7%A4%BA-%E2%80%9C%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF-%E6%97%A0%E6%B3%95%E5%8D%8F%E5%95%86-SSL%E3%80%82%E2%80%9D/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/26/VMware%E5%BC%80%E5%90%AF%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E5%8F%8A%E6%8F%90%E7%A4%BA-%E2%80%9C%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF-%E6%97%A0%E6%B3%95%E5%8D%8F%E5%95%86-SSL%E3%80%82%E2%80%9D/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.1k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="VMware开启时间过长及提示-“连接错误-无法协商-SSL。”"><a href="#VMware开启时间过长及提示-“连接错误-无法协商-SSL。”" class="headerlink" title="VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”"></a>VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”</h1><h3 id="故障说明"><a href="#故障说明" class="headerlink" title="故障说明"></a>故障说明</h3><p>在升级Win10 专业工作站版 到2004 后发现 VMware 开启时间过长将近两分钟才可以加载完成 卡在初始化页面 如下</p>
+<p><img src="/images/VMware_white.png" alt="白屏页面">  <br>经过好久后启动完成。  同时连接esxi服务器后打开已启动虚拟机造成VMware长时间未响应容易造成卡死如下图</p>
+<p><img src="/images/VMware_2.png" alt="未响应截图"><br>同时虚拟机客户端页面显示黑屏 不能正常远程操作如下图</p>
+<p><img src="/images/VMware_02.png" alt="客户端黑屏"><br>有时间会提醒用户 “连接错误: 无法协商 SSL。”  有时候不会有更多提醒。。弹窗图片待补充</p>
+<p><img src="/images/VMware_03.png" alt="连接错误: 无法协商 SSL。"></p>
+<span id="more"></span>
+
+<h3 id="排查过程"><a href="#排查过程" class="headerlink" title="排查过程"></a>排查过程</h3><p>因提醒比较模糊 按照提醒进行排查 走很多弯路 如有同样遇到此情况的朋友 可直接查看解决方法 查看是否可解决</p>
+<ol>
+<li>因提示SSL无法协商  第一时间想到是否是因为域名证书 错误。。正好回想到成就传言我所使用Let’s Encrypt OSCP域名访问可能出现问题。更换为 aliyun提供免费的域名在证书 导入新证书后 仍然存在此问题 排除是ssl证书引起报错</li>
+<li>因升级了win10 2004 版本  怀疑为VMware 与win10 2004 本身虚拟化网卡 不兼容 升级VMware至15.5.6 build-16341506 后 仍存在此问题 。后经过降级VMware各版本  仍存在此问题 但发现每次重启后首次打开无问题 启动一些应用娱乐工作 后发现再次出现问题。。初步将下次排查方向定在本机网络 路由上。</li>
+<li>因该错误在网上没有查询到同样状况的网友 感觉可能是自己本身系统设置 或网络设置问题。因本人电脑使用很多相关工具造成虚拟网卡很多 联想到可能是路由错误 分别开始 从 卸载VMware自身虚拟网卡 Zerotier虚拟网卡 等等软件虚拟网卡  仍未解决  但发现 使用网络重置命令后VMware可正常使用。。。定位到为本机网络设置问题。。。关闭所有防火墙  火绒规则后 仍然存在此问题。。。既然知道重置网络<code>netsh winsock reset</code>命令可临时解决此问题 故本着又不是不能用的原则 告一段落（毕竟曾经有几个版本VMware 不能打开虚拟机页面也是sock无法建立 所有放弃继续查找 主观认为可能是VMWare本身软件问题及个人复杂环境冲突引起bug 所有没再研究 后面发现是这次不是VMware的锅。。）</li>
+</ol>
+<h3 id="最终本机环境的故障引起原因及解决方法"><a href="#最终本机环境的故障引起原因及解决方法" class="headerlink" title="最终本机环境的故障引起原因及解决方法"></a>最终本机环境的故障引起原因及解决方法</h3><p>随着找到了临时解决方法事情本想事情也告一段落  </p>
+<h4 id="1-找到引起故障元凶"><a href="#1-找到引起故障元凶" class="headerlink" title="1. 找到引起故障元凶"></a>1. 找到引起故障元凶</h4><p>在玩GTA5时因为网络问题需要上加速器朋友推荐了流星游戏加速器永久免费而且说至少GTA5上使用不错(北京联通线路)加速器确实不错 个人推荐各位不常用加速器的可以使用试试  <br>因为一直没有查找到原因心中始终把这个事情放在心上，，在一次使用加速器时突然想到是否是加速器的加速规则 与VMWare冲突造成 VMware 网络不正常。 经过几次测试后发现 GTA5-EPIC 使用模式5 的时候的规则造成与VMware部分网络规则有冲突 造成VMware连接服务器时有网络错误。。 停止加速后 使用软件自带修复网络功能即可正常使用VMware</p>
+<h4 id="2-解决方法"><a href="#2-解决方法" class="headerlink" title="2. 解决方法"></a>2. 解决方法</h4><ol>
+<li>每次玩完游戏后 停止游戏加速后 使用自带工具 修复网络 如下图 后可正常使用</li>
+<li>本人使用模式4 不会引起此bug</li>
+</ol>
+<p><img src="/images/VMware_04.png" alt="修复网络"></p>
+<h6 id="如有网友遇到类似问题-可按照本文章提供思路排查一次-看是否其他加速代理工具引起此故障。"><a href="#如有网友遇到类似问题-可按照本文章提供思路排查一次-看是否其他加速代理工具引起此故障。" class="headerlink" title="如有网友遇到类似问题 可按照本文章提供思路排查一次 看是否其他加速代理工具引起此故障。"></a>如有网友遇到类似问题 可按照本文章提供思路排查一次 看是否其他加速代理工具引起此故障。</h6><h3 id="写在最后-如有流星加速器相关工作人员看到此文章请排查是因我个人操作问题引起此问题还是本身有个小bug。也感谢流星加速器提供的免费稳定的gta5加速功能。因文章并无主观抹黑贵公司产品意图，如有侵犯可留言联系本人做相关去关键字处理。"><a href="#写在最后-如有流星加速器相关工作人员看到此文章请排查是因我个人操作问题引起此问题还是本身有个小bug。也感谢流星加速器提供的免费稳定的gta5加速功能。因文章并无主观抹黑贵公司产品意图，如有侵犯可留言联系本人做相关去关键字处理。" class="headerlink" title="写在最后 如有流星加速器相关工作人员看到此文章请排查是因我个人操作问题引起此问题还是本身有个小bug。也感谢流星加速器提供的免费稳定的gta5加速功能。因文章并无主观抹黑贵公司产品意图，如有侵犯可留言联系本人做相关去关键字处理。"></a>写在最后 如有流星加速器相关工作人员看到此文章请排查是因我个人操作问题引起此问题还是本身有个小bug。也感谢流星加速器提供的免费稳定的gta5加速功能。因文章并无主观抹黑贵公司产品意图，如有侵犯可留言联系本人做相关去关键字处理。</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    C-Y-X
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://delayer.top/2020/07/26/VMware%E5%BC%80%E5%90%AF%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E5%8F%8A%E6%8F%90%E7%A4%BA-%E2%80%9C%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF-%E6%97%A0%E6%B3%95%E5%8D%8F%E5%95%86-SSL%E3%80%82%E2%80%9D/" title="VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”">https://delayer.top/2020/07/26/VMware%E5%BC%80%E5%90%AF%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E5%8F%8A%E6%8F%90%E7%A4%BA-%E2%80%9C%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF-%E6%97%A0%E6%B3%95%E5%8D%8F%E5%95%86-SSL%E3%80%82%E2%80%9D/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/28/Windows10%E4%B8%8BKeePass%E4%BD%BF%E7%94%A8KeeAgent%E6%8F%92%E4%BB%B6%E8%BF%9B%E8%A1%8Cssh%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86/" rel="next" title="Windows10下KeePass使用KeeAgent插件进行ssh密钥管理">
+                <i class="fa fa-chevron-left"></i> Windows10下KeePass使用KeeAgent插件进行ssh密钥管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VMware%E5%BC%80%E5%90%AF%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E5%8F%8A%E6%8F%90%E7%A4%BA-%E2%80%9C%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF-%E6%97%A0%E6%B3%95%E5%8D%8F%E5%95%86-SSL%E3%80%82%E2%80%9D"><span class="nav-number">1.</span> <span class="nav-text">VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.1.</span> <span class="nav-text">故障说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B"><span class="nav-number">1.0.2.</span> <span class="nav-text">排查过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%9C%AC%E6%9C%BA%E7%8E%AF%E5%A2%83%E7%9A%84%E6%95%85%E9%9A%9C%E5%BC%95%E8%B5%B7%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">1.0.3.</span> <span class="nav-text">最终本机环境的故障引起原因及解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%89%BE%E5%88%B0%E5%BC%95%E8%B5%B7%E6%95%85%E9%9A%9C%E5%85%83%E5%87%B6"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1. 找到引起故障元凶</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2. 解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A6%82%E6%9C%89%E7%BD%91%E5%8F%8B%E9%81%87%E5%88%B0%E7%B1%BB%E4%BC%BC%E9%97%AE%E9%A2%98-%E5%8F%AF%E6%8C%89%E7%85%A7%E6%9C%AC%E6%96%87%E7%AB%A0%E6%8F%90%E4%BE%9B%E6%80%9D%E8%B7%AF%E6%8E%92%E6%9F%A5%E4%B8%80%E6%AC%A1-%E7%9C%8B%E6%98%AF%E5%90%A6%E5%85%B6%E4%BB%96%E5%8A%A0%E9%80%9F%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7%E5%BC%95%E8%B5%B7%E6%AD%A4%E6%95%85%E9%9A%9C%E3%80%82"><span class="nav-number">1.0.3.2.0.1.</span> <span class="nav-text">如有网友遇到类似问题 可按照本文章提供思路排查一次 看是否其他加速代理工具引起此故障。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E-%E5%A6%82%E6%9C%89%E6%B5%81%E6%98%9F%E5%8A%A0%E9%80%9F%E5%99%A8%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C%E4%BA%BA%E5%91%98%E7%9C%8B%E5%88%B0%E6%AD%A4%E6%96%87%E7%AB%A0%E8%AF%B7%E6%8E%92%E6%9F%A5%E6%98%AF%E5%9B%A0%E6%88%91%E4%B8%AA%E4%BA%BA%E6%93%8D%E4%BD%9C%E9%97%AE%E9%A2%98%E5%BC%95%E8%B5%B7%E6%AD%A4%E9%97%AE%E9%A2%98%E8%BF%98%E6%98%AF%E6%9C%AC%E8%BA%AB%E6%9C%89%E4%B8%AA%E5%B0%8Fbug%E3%80%82%E4%B9%9F%E6%84%9F%E8%B0%A2%E6%B5%81%E6%98%9F%E5%8A%A0%E9%80%9F%E5%99%A8%E6%8F%90%E4%BE%9B%E7%9A%84%E5%85%8D%E8%B4%B9%E7%A8%B3%E5%AE%9A%E7%9A%84gta5%E5%8A%A0%E9%80%9F%E5%8A%9F%E8%83%BD%E3%80%82%E5%9B%A0%E6%96%87%E7%AB%A0%E5%B9%B6%E6%97%A0%E4%B8%BB%E8%A7%82%E6%8A%B9%E9%BB%91%E8%B4%B5%E5%85%AC%E5%8F%B8%E4%BA%A7%E5%93%81%E6%84%8F%E5%9B%BE%EF%BC%8C%E5%A6%82%E6%9C%89%E4%BE%B5%E7%8A%AF%E5%8F%AF%E7%95%99%E8%A8%80%E8%81%94%E7%B3%BB%E6%9C%AC%E4%BA%BA%E5%81%9A%E7%9B%B8%E5%85%B3%E5%8E%BB%E5%85%B3%E9%94%AE%E5%AD%97%E5%A4%84%E7%90%86%E3%80%82"><span class="nav-number">1.0.4.</span> <span class="nav-text">写在最后 如有流星加速器相关工作人员看到此文章请排查是因我个人操作问题引起此问题还是本身有个小bug。也感谢流星加速器提供的免费稳定的gta5加速功能。因文章并无主观抹黑贵公司产品意图，如有侵犯可留言联系本人做相关去关键字处理。</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C-Y-X</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">3.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'od5Y6ya7IxXXCLGWWEKduLUV-MdYXbMMI',
+        appKey: 'IuxmpTmPln0YcOsobv40euJA',
+        placeholder: '添加评论',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

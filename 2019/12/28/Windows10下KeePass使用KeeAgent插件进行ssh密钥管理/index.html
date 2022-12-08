@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言本文章只对本人在Windows10下KeePass使用KeeAgent插件进行ssh密钥管理的记录   首先感谢所有使用项目的开发者们。  使用软件或项目如下  KeePass 2.4.3 KeePass主程序 KeepAgent Stable 0.10.1 KeeAgent插件 weasel-pagent 1.4 weasel-pagent程序 如WSL需要使用KeeAgent需要使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows10下KeePass使用KeeAgent插件进行ssh密钥管理">
+<meta property="og:url" content="https://delayer.top/2019/12/28/Windows10%E4%B8%8BKeePass%E4%BD%BF%E7%94%A8KeeAgent%E6%8F%92%E4%BB%B6%E8%BF%9B%E8%A1%8Cssh%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="C-Y-X">
+<meta property="og:description" content="前言本文章只对本人在Windows10下KeePass使用KeeAgent插件进行ssh密钥管理的记录   首先感谢所有使用项目的开发者们。  使用软件或项目如下  KeePass 2.4.3 KeePass主程序 KeepAgent Stable 0.10.1 KeeAgent插件 weasel-pagent 1.4 weasel-pagent程序 如WSL需要使用KeeAgent需要使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://delayer.top/images/pasted-0.png?1">
+<meta property="og:image" content="https://delayer.top/images/pasted-1.png">
+<meta property="og:image" content="https://delayer.top/images/pasted-2.png">
+<meta property="og:image" content="https://delayer.top/images/pasted-3.png">
+<meta property="og:image" content="https://delayer.top/images/pasted-4.png">
+<meta property="og:image" content="https://delayer.top/images/pasted-5.png">
+<meta property="og:image" content="https://delayer.top/images/pasted-6.png">
+<meta property="og:image" content="https://delayer.top/images/pasted-7.png">
+<meta property="og:image" content="https://delayer.top/images/pasted-8.png">
+<meta property="og:image" content="https://delayer.top/images/pasted-9.png">
+<meta property="article:published_time" content="2019-12-28T05:55:00.000Z">
+<meta property="article:modified_time" content="2019-12-30T17:00:14.143Z">
+<meta property="article:author" content="C-Y-X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://delayer.top/images/pasted-0.png?1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://delayer.top/2019/12/28/Windows10下KeePass使用KeeAgent插件进行ssh密钥管理/"/>
+
+
+
+
+
+  <title>Windows10下KeePass使用KeeAgent插件进行ssh密钥管理 | C-Y-X</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">C-Y-X</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://delayer.top/2019/12/28/Windows10%E4%B8%8BKeePass%E4%BD%BF%E7%94%A8KeeAgent%E6%8F%92%E4%BB%B6%E8%BF%9B%E8%A1%8Cssh%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="C-Y-X">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Windows10下KeePass使用KeeAgent插件进行ssh密钥管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-28T13:55:00+08:00">
+                2019-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/28/Windows10%E4%B8%8BKeePass%E4%BD%BF%E7%94%A8KeeAgent%E6%8F%92%E4%BB%B6%E8%BF%9B%E8%A1%8Cssh%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/28/Windows10%E4%B8%8BKeePass%E4%BD%BF%E7%94%A8KeeAgent%E6%8F%92%E4%BB%B6%E8%BF%9B%E8%A1%8Cssh%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5 分
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>本文章只对本人在Windows10下KeePass使用KeeAgent插件进行ssh密钥管理的记录   <br>首先感谢所有使用项目的开发者们。  <br>使用软件或项目如下</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://keepass.info/download.html">KeePass 2.4.3</a> KeePass主程序</li>
+<li><a target="_blank" rel="noopener" href="https://lechnology.com/software/keeagent/">KeepAgent Stable 0.10.1</a> KeeAgent插件</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vuori/weasel-pageant/releases">weasel-pagent 1.4</a> weasel-pagent程序 如WSL需要使用KeeAgent需要使用</li>
+</ul>
+<p>  </p>
+<p>其次感谢部分已有教程的启发及指导</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zohead.com/archives/win10-bash-keeagent/">Win10 Bash下使用KeePass KeeAgent插件</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.mendhak.com/keeagent-with-wsl/">How to use KeeAgent with WSL and Ubuntu
+</a></li>
+</ul>
+<span id="more"></span>
+
+<h4 id="一、KeePass主体及KeeAgent插件下载安装"><a href="#一、KeePass主体及KeeAgent插件下载安装" class="headerlink" title="一、KeePass主体及KeeAgent插件下载安装"></a>一、KeePass主体及KeeAgent插件下载安装</h4><p>通过以下链接下载及安装KeePass主体及KeeAgent插件<br><a target="_blank" rel="noopener" href="https://keepass.info/download.html">KeePass 2.4.3</a> KeePass主程序可根据个人喜好选择安装版或便携版  <br><a target="_blank" rel="noopener" href="https://lechnology.com/software/keeagent/">KeepAgent Stable 0.10.1</a> KeeAgent插件下载解压缩至 KeePass程序目录下 或可在主目录下新建文件夹进行统一插件管理 本人使用Plugins文件夹将进行统一管理</p>
+<p><img src="/images/pasted-0.png?1" alt="图片仅供参考 文件数量因版本及使用时间不同略有不同" title="图片仅供参考 文件数量因版本及使用时间不同略有不同 图一-1"><br><img src="/images/pasted-1.png" alt="图片仅供参考 图一-2" title="图片仅供参考 图一-2"><br>如需要支持和WSL中ubuntu 需要下载压缩<a target="_blank" rel="noopener" href="https://github.com/vuori/weasel-pageant/releases">weasel-pagent 1.4</a>  建议同样压缩至KeePass主目录下 方便管理 如不需要支持WSL中ubuntu 则可跳过此步骤</p>
+<h4 id="二、KeeAgent-插件配置及使用"><a href="#二、KeeAgent-插件配置及使用" class="headerlink" title="二、KeeAgent 插件配置及使用"></a>二、KeeAgent 插件配置及使用</h4><h5 id="KeeAgent插件配置"><a href="#KeeAgent插件配置" class="headerlink" title="KeeAgent插件配置"></a>KeeAgent插件配置</h5><ol>
+<li>打开KeePass主程序 自动加载编译 KeeAgent插件 在 工具栏 工具-》选项中 会发现多出图二-1中①标 KeeAgent选项 。选中进入配置</li>
+</ol>
+<p><img src="/images/pasted-2.png" alt="图二-1" title="图二-1"><br>2. 配置并勾选② 选项 开启Windows OpenSSH支持  配置并勾选③ 选项 临时目录可自定义 本人选用Windows默认Temp目录 ④为msysGit支持(本人未使用测试过)</p>
+<h5 id="KeeAgent使用"><a href="#KeeAgent使用" class="headerlink" title="KeeAgent使用"></a>KeeAgent使用</h5><ol>
+<li><p>新建KeePass记录  <br>标题自定义 如生成密钥时填写过密码则在密码框填入 <b>如为空则清空密码框默认生成随机密码(划重点)</b><br>进入高级页面<br><img src="/images/pasted-3.png" alt="图二-1.1" title="图二-1.1"><br>点击② 附件  添加附件 添加生成的私钥文件 此步骤是将私钥文件存储至KeePass记录存储库中 如后续不需要本地私钥可删除本地私钥<br>进入KeeAgent页面进行配置如下图 最后点击ok 添加完成<br><img src="/images/pasted-4.png" alt="图二-1.2" title="图二-1.2">  </p>
+<blockquote>
+<p>序号说明<br> 2.允许KeeAgent使用改记录<b>(必选)</b><br> 3.当数据库开启&#x2F;解锁时自动加载此密钥<b>(可选 建议常用密钥选择 因每次建立ssh链接只允许尝试3-5次私钥 建议非常用 不勾选此选项 如需要使用时手动加载密钥)</b>  <br> 4.当数据库关闭或者锁定 自动卸载此密钥<b>(可选 建议选中 如需要锁定数据库仍然可使用该密钥则不勾选 为保证安全性改选项默认勾选)</b><br> 5.使用该密钥需要确认  当调用此密钥时会弹出对话框二次确认 进一步提升安全性<br> 6.选择新建记录时添加的私钥文件<br> 7.私钥名称 跟附件名称对应 可通过修改附件名称修改<br> 8.对应密钥公钥 </p>
+</blockquote>
+</li>
+<li><p>加载密钥  <br>手动加载密钥<br><img src="/images/pasted-5.png" alt="图二-2.1" title="图二-2.1"><br>加载后可在 KeePass 主程序工具栏 工具-&gt;KeeAgent 或者 托盘程序右键菜单 KeeAgent中查看管理到当前加载密钥</p>
+</li>
+</ol>
+<p><img src="/images/pasted-6.png" alt="图二-2.2" title="图二-2.2"></p>
+<h4 id="三、Windows10下cmd-、PowerShell、Git客户端、MINGW64-使用KeeAgent密钥"><a href="#三、Windows10下cmd-、PowerShell、Git客户端、MINGW64-使用KeeAgent密钥" class="headerlink" title="三、Windows10下cmd 、PowerShell、Git客户端、MINGW64 使用KeeAgent密钥"></a>三、Windows10下cmd 、PowerShell、Git客户端、MINGW64 使用KeeAgent密钥</h4><ol>
+<li>Windows 10 cmd 、PowerShell 如配置正常 勾选图二-1中 ② 则可正常使用 （如须同时开启Git客户端及MING64客户端支持 此处有大坑 后面会提及 ）</li>
+<li>Git客户端及MING64使用 需在系统环境变量中 添加如图三-2配置  配置成功后 重新开启 Git 及 MINGW64客户端 可正常使用KeeAgent中密钥<br> 变量名 SSH_AUTH_SOCK  变量值  C:\Windows\Temp\Cygwin.sock<br><img src="/images/pasted-7.png" alt="图三-2" title="图三-2">  </li>
+<li>冲突解决方法<br>此处为上面提及cmd 、PowerShell、Git客户端、MINGW64 冲突的大坑。在进行过三.2配置后会发现 cmd及PowerShell 中 git及ssh 命令不在能正确使用 KeeAgent中密钥。 初步查找原因是因 环境变量配置SSH_AUTH_SOCK 后 会使 cmd 及 PowerShell中agent程序代理错误 本人经过尝试后 发现解决方法有以下几种 如有更好解决方法欢迎大家交流</li>
+<li>网上有网友通过在windows用户文件夹下 .bashrc 中 添加 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> SSH_AUTH_SOCK=<span class="string">&quot;C:\Windows\Temp\Cygwin.sock&quot;</span></span><br></pre></td></tr></table></figure>
+<pre><code>初始MINGW64 及Git客户端  不需要添加三.2的环境变量 但是本人测试没通过  本人使用环境 Windows10 1903 Git版本2.24.1.windows.2及其自带MINGW64  
+</code></pre>
+</li>
+<li>保留系统环境变量  通过cmd及 PowerShell 初始化是进行删除当前命令环境下 SSH_AUTH_SOCK 系统变量<ul>
+<li>cmd 初始化脚本 打开注册表编辑器(regedit) 定位至<br>  计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor<br> 添加字符串<br>  AutoRun  数值数据 set SSH_AUTH_SOCK&#x3D;<br> 如图三-2.2.1<br><img src="/images/pasted-8.png" alt="如图三-2.2.1" title="图三-2.2.1"></li>
+<li>PowerShell 初始化脚本添加  以管理员身份运行 PowerShell 分别执行一下命令<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">new-item</span> <span class="literal">-path</span> <span class="variable">$profile</span> <span class="literal">-itemtype</span> file <span class="literal">-force</span></span><br><span class="line">notepad <span class="variable">$profile</span></span><br></pre></td></tr></table></figure>
+  在打开的记事本中添加命令<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-Item</span> Env:SSH_AUTH_SOCK</span><br></pre></td></tr></table></figure>
+  重新打开PowerShell 如因策略安全提醒禁止使用初始脚本 则执行<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set-ExecutionPolicy</span> RemoteSigned</span><br></pre></td></tr></table></figure>
+  输入Y回车<br>  <b>此方法开启了默认关闭的安全策略 可能会造成安全隐患  但目前只知道了这个比较好的方法 如有更好方法 欢迎大家交流</b>    </li>
+<li><b>目前本人采用 2方法</b></li>
+</ul>
+</li>
+</ol>
+<p>    </p>
+<h4 id="四、WSL-中Ubuntu-使用KeeAgent-密钥方法"><a href="#四、WSL-中Ubuntu-使用KeeAgent-密钥方法" class="headerlink" title="四、WSL 中Ubuntu 使用KeeAgent 密钥方法"></a>四、WSL 中Ubuntu 使用KeeAgent 密钥方法</h4><ol>
+<li>下载安装<a target="_blank" rel="noopener" href="https://github.com/vuori/weasel-pageant/releases">weasel-pagent 1.4</a> weasel-pagent程序 解压缩至任意文件夹 建议解压缩至KeePass程序目录下</li>
+<li>Ubuntu中使用weasel-pagent  启用Ubuntu 编辑~&#x2F;.bash_profile文件 添加以下内容 其中weaselpath 根据自己存放目录进行修改<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">weaselpath=<span class="string">&quot;/mnt/d/SoftWare/KeePass/weasel-pageant/&quot;</span></span><br><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;pageant loading, wait...&quot;</span></span><br><span class="line"><span class="string">&quot;<span class="variable">$weaselpath</span>/weasel-pageant&quot;</span> -k&gt; /dev/null 2&gt; /dev/null</span><br><span class="line"><span class="built_in">eval</span> $(<span class="string">&quot;<span class="variable">$weaselpath</span>/weasel-pageant&quot;</span> -r -a <span class="string">&quot;/tmp/.weasel-pageant-<span class="variable">$USER</span>&quot;</span>)&gt; /dev/null 2&gt; /dev/null</span><br><span class="line"><span class="built_in">sleep</span> 1</span><br><span class="line">sshkeysloaded=$(ssh-add -l | grep -c SHA)</span><br><span class="line"><span class="keyword">if</span> [[ <span class="variable">$sshkeysloaded</span> -gt 0 ]];  <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">&quot;Loaded <span class="variable">$sshkeysloaded</span> keys.&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">&quot;Failed to load any keys.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+保存退出  重新启动Ubuntu  如有以下提醒则证明加载成功</li>
+</ol>
+<p><img src="/images/pasted-9.png" alt="upload successful"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    C-Y-X
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://delayer.top/2019/12/28/Windows10%E4%B8%8BKeePass%E4%BD%BF%E7%94%A8KeeAgent%E6%8F%92%E4%BB%B6%E8%BF%9B%E8%A1%8Cssh%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86/" title="Windows10下KeePass使用KeeAgent插件进行ssh密钥管理">https://delayer.top/2019/12/28/Windows10%E4%B8%8BKeePass%E4%BD%BF%E7%94%A8KeeAgent%E6%8F%92%E4%BB%B6%E8%BF%9B%E8%A1%8Cssh%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/28/%E9%83%A8%E5%88%86%E7%A5%9E%E8%88%9F%E5%8F%8A%E8%93%9D%E5%A4%A9%E6%A8%A1%E5%85%B7%E7%AC%94%E8%AE%B0%E6%9C%AC%E6%8C%87%E7%BA%B9%E6%A8%A1%E5%9D%97%E4%B8%8D%E8%AF%86%E5%88%ABbug/" rel="next" title="部分神舟及蓝天模具笔记本指纹模块不识别bug">
+                <i class="fa fa-chevron-left"></i> 部分神舟及蓝天模具笔记本指纹模块不识别bug
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/26/VMware%E5%BC%80%E5%90%AF%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF%E5%8F%8A%E6%8F%90%E7%A4%BA-%E2%80%9C%E8%BF%9E%E6%8E%A5%E9%94%99%E8%AF%AF-%E6%97%A0%E6%B3%95%E5%8D%8F%E5%95%86-SSL%E3%80%82%E2%80%9D/" rel="prev" title="VMware开启时间过长及提示 “连接错误: 无法协商 SSL。”">
+                VMware开启时间过长及提示 “连接错误: 无法协商 SSL。” <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81KeePass%E4%B8%BB%E4%BD%93%E5%8F%8AKeeAgent%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number"></span> <span class="nav-text">一、KeePass主体及KeeAgent插件下载安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81KeeAgent-%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE%E5%8F%8A%E4%BD%BF%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">二、KeeAgent 插件配置及使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#KeeAgent%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">KeeAgent插件配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KeeAgent%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">KeeAgent使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81Windows10%E4%B8%8Bcmd-%E3%80%81PowerShell%E3%80%81Git%E5%AE%A2%E6%88%B7%E7%AB%AF%E3%80%81MINGW64-%E4%BD%BF%E7%94%A8KeeAgent%E5%AF%86%E9%92%A5"><span class="nav-number"></span> <span class="nav-text">三、Windows10下cmd 、PowerShell、Git客户端、MINGW64 使用KeeAgent密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81WSL-%E4%B8%ADUbuntu-%E4%BD%BF%E7%94%A8KeeAgent-%E5%AF%86%E9%92%A5%E6%96%B9%E6%B3%95"><span class="nav-number"></span> <span class="nav-text">四、WSL 中Ubuntu 使用KeeAgent 密钥方法</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">C-Y-X</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">3.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'od5Y6ya7IxXXCLGWWEKduLUV-MdYXbMMI',
+        appKey: 'IuxmpTmPln0YcOsobv40euJA',
+        placeholder: '添加评论',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
